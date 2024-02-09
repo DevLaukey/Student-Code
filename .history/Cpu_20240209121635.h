@@ -21,7 +21,6 @@
 #include "DataMemory.h"
 #include "InstructionMemory.h"
 #include "RegisterFile.h"
-#include <string>
 
 class Cpu
 {
@@ -103,7 +102,6 @@ private:
     void thread_wb_start();
 
     int clockCycle;
-    std::string forwardingMessage;
 
 public:
     Cpu();

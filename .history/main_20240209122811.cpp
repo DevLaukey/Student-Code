@@ -21,8 +21,9 @@ int main(int argc, char *argv[])
     std::istringstream(argv[2]) >> numCycles;
 
     // Print a startup banner
-    std::cout << "SER450 - Project 4b" << std::endl;
-    std::cout << "Akhil Matthews" << std::endl;
+    std::cout << "Startup Banner:" << std::endl;
+    std::cout << "Author: Your Name" << std::endl;
+    std::cout << "Course Number: Your Course Number" << std::endl;
     std::cout << "--------------------------------" << std::endl;
 
     // Create instances of each class

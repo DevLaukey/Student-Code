@@ -383,31 +383,20 @@ void Cpu::update()
     regEXMEM_MEMside = regEXMEM_EXside;
     regMEMWB_WBside = regMEMWB_MEMside;
 
-    clockCycle++;   
+    clockCycle++;
 }
 
 //**********************************************************************
 // dump()
 // dump the state of the CPU object to the standard output device
-// Updated dump() function
 void Cpu::dump()
 {
-    printf("Clock Cycle: %d\n", clockCycle);
-
-    // Print forwarding messages
-    if (forwardingMessage[0] != '\0')
-    {
-        printf("%s\n", forwardingMessage);
-        forwardingMessage[0] = '\0'; // Clear the message
-    }
-
     printf("PIPELINE\n");
     printf("IF:  %08x (PC = %08x)\n", imem.value(regIDEX_EXside.next_pc), regIDEX_EXside.next_pc);
     printf("ID:  %08x\n", regIFID_IDside.instruction);
     printf("EXE: %08x\n", regIDEX_EXside.instruction);
     printf("MEM: %08x\n", regEXMEM_MEMside.instruction);
     printf("WB:  %08x\n", regMEMWB_WBside.instruction);
-
     printf("REGISTER FILE\n");
     regs.dump();
     printf("\n");

@@ -8,22 +8,15 @@
 
 int main(int argc, char *argv[])
 {
-    // Check if a filename and the number of cycles are provided as command-line arguments
-    if (argc != 3)
+    // Check if a filename is provided as a command-line argument
+    if (argc != 2)
     {
-        std::cerr << "Usage: " << argv[0] << " <filename> <num_cycles>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1; // Exit with an error code
     }
 
-    // Extract the filename and the number of cycles from the command-line arguments
+    // Extract the filename from the command-line arguments
     std::string filename = argv[1];
-    int numCycles;
-    std::istringstream(argv[2]) >> numCycles;
-
-    // Print a startup banner
-    std::cout << "SER450 - Project 4b" << std::endl;
-    std::cout << "Akhil Matthews" << std::endl;
-    std::cout << "--------------------------------" << std::endl;
 
     // Create instances of each class
     DataMemory dataMemory;
@@ -53,13 +46,9 @@ int main(int argc, char *argv[])
     }
 
     // Simulate the fetch-decode-execute cycle using the Cpu class
-    for (unsigned int cycle = 0; cycle < numCycles; ++cycle)
+    for (unsigned int pc = 0; pc < 2048; pc += 4)
     {
-        // Print the current clock cycle
-        std::cout << "Clock Cycle: " << cycle << std::endl;
-
         // Fetch instruction from instruction memory
-        unsigned int pc = cycle * 4;
         unsigned int instruction = instructionMemory.value(pc);
 
         // Set the program counter using the Cpu's setImem function
@@ -67,13 +56,9 @@ int main(int argc, char *argv[])
 
         // Update the Cpu for one clock cycle
         cpu.update();
-
-        // Optionally, print the state of the Cpu (uncomment if needed)
-        // cpu.dump();
     }
 
     // Print the final state of the register file using the Cpu's dump function
-    std::cout << "Final Register File State:" << std::endl;
     cpu.dump();
 
     return 0;

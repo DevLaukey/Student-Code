@@ -382,14 +382,11 @@ void Cpu::update()
     regIDEX_EXside = regIDEX_IDside;
     regEXMEM_MEMside = regEXMEM_EXside;
     regMEMWB_WBside = regMEMWB_MEMside;
-
-    clockCycle++;   
 }
 
 //**********************************************************************
 // dump()
 // dump the state of the CPU object to the standard output device
-// Updated dump() function
 void Cpu::dump()
 {
     printf("Clock Cycle: %d\n", clockCycle);

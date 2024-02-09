@@ -21,7 +21,6 @@
 #include "DataMemory.h"
 #include "InstructionMemory.h"
 #include "RegisterFile.h"
-#include <string>
 
 class Cpu
 {
