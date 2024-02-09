@@ -1,0 +1,10 @@
+00000000 1 02108027    #         nor $s0,$s0,$s0
+00000004 1 00108022    #         sub $s0,$zero,$s0
+00000008 1 02118820    # loop:   add $s1,$s0,$s1
+0000000C 1 00000000    #         nop
+00000010 1 12200001    #         beq $s1, again
+00000014 1 00000000    #         nop                (fill the branch slot)
+00000018 1 08000002    # again:  j   loop
+0000001C 1 00000000    #         nop                (fill the branch slot)
+00000020 1 08000008    # done:   j   done
+00000024 1 00000000    #         nop                (fill the branch slot)

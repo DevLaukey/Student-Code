@@ -17,10 +17,6 @@
 #include <stdio.h>
 #include "Cpu.h"
 #include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <cstring>
-#include "Cpu.h"
 
 /*************************************************************************
  * Student modifications should go here to give the proper values for these
@@ -77,13 +73,13 @@ void Cpu::setDmem(unsigned int address, unsigned int value)
 // CPU.  This was covered in the class lecture notes
 void Cpu::update()
 {
-    // Increment instruction count
-    totalInstructions++;
+    // calculate the combinational logic values - these become stable
+    // some amount of time after the previous system clock.
 
-    // Fetch the current instruction
+    // fetch the current instruction
     unsigned int instruction = imem.value(pc);
 
-    // Extract the fields from the instruction
+    // extract the fields from the instruction
     unsigned int opcode = BITS(instruction, 26, 31);
     unsigned int funct = BITS(instruction, 0, 5);
     unsigned int rdidx = BITS(instruction, 11, 15);
@@ -92,16 +88,16 @@ void Cpu::update()
     signed int immed = SIGN_EXT(BITS(instruction, 0, 15));
     unsigned int jmpaddr = BITS(instruction, 0, 25);
 
-    // ALU operation combinational logic
+    // alu operation combinational logic
     int ALUOp = 0x0;
     if ((opcode == 0x23) || (opcode == 0x2b))
-        ALUOp = 0x0; // Load or store instructions
+        ALUOp = 0x0; // load or store instructions
     if (opcode == 0x04)
-        ALUOp = 0x1; // Branch on equal instruction
+        ALUOp = 0x1; // branch on equal instruction
     if (opcode == 0x00)
-        ALUOp = 0x2; // R-type instructions
+        ALUOp = 0x2; // r-type instructions
 
-    // ALU control combinational logic
+    // alu control combinational logic
     int ALUControl = 0xF;
     if (ALUOp == 0x0)
         ALUControl = 0x2; // lw/sw -> add
@@ -121,7 +117,7 @@ void Cpu::update()
             ALUControl = 0x7; // set-on-less-than
     }
 
-    // Additional control signals based on opcode
+    // additional control signals based on opcode
     unsigned int aluSrc = (opcode == OP_LW) || (opcode == OP_SW) ? 1 : 0;
     unsigned int regDest = (opcode == OP_RTYPE) ? 1 : 0;
     unsigned int branch = (opcode == OP_BEQ) ? 1 : 0;
@@ -131,59 +127,60 @@ void Cpu::update()
     unsigned int regWrite = (opcode == OP_LW) || (opcode == OP_RTYPE) ? 1 : 0;
     unsigned int jump = (opcode == OP_JMP) ? 1 : 0;
 
-    // Register file read operation based on rt and rd indices
+    // register file read operation based on rt and rd indicies
     unsigned int regRs = regs.readData1(rsidx);
     unsigned int regRt = regs.readData2(rtidx);
 
-    // ALU source selection multiplexor
+    // alu source selection multiplexor
     unsigned int operand1 = regRs;
     unsigned int operand2 = aluSrc ? immed : regRt;
 
-    // ALU combinational logic
+    // ALU combinatinational logic
     int ALUResult = 0;
     if (ALUControl == 0x0)
-        ALUResult = operand1 & operand2; // AND
+        ALUResult = operand1 & operand2; // and
     if (ALUControl == 0x1)
-        ALUResult = operand1 | operand2; // OR
+        ALUResult = operand1 | operand2; // or
     if (ALUControl == 0x2)
-        ALUResult = operand1 + operand2; // ADD
+        ALUResult = operand1 + operand2; // add
     if (ALUControl == 0x6)
-        ALUResult = operand1 - operand2; // SUBTRACT
+        ALUResult = operand1 - operand2; // subtract
     if (ALUControl == 0x7)
-        ALUResult = (operand1 < operand2) ? 1 : 0; // SET LESS THAN
+        ALUResult = (operand1 < operand2) ? 1 : 0; // set less than
     if (ALUControl == 0xc)
-        ALUResult = ~(operand1 | operand2); // NOR
+        ALUResult = ~(operand1 | operand2); // nor
     int zero = (ALUResult == 0x00000000) ? 1 : 0;
 
-    // Read the data memory if required
+    // read the data memory if required
     unsigned int memData = dmem.read(ALUResult, memRead);
 
-    // Register write data multiplexor
+    // register write data multipelexor
     unsigned int regWrData = memToReg ? memData : ALUResult;
 
-    // Register write destination multiplexor
+    // register write destination multiplexor
     unsigned int regWrAddr = regDest ? rdidx : rtidx;
 
-    // Update the CPU state based on the rising edge of the system clock
-    // In real hardware, these updates would all happen simultaneously
+    // calculate the branch or jump address
+    unsigned int branchAddr = (immed << 2) + pc + 4;
+    unsigned int fullJumpAddr = ((pc + 4) & 0xF0000000) | (jmpaddr << 2);
+    unsigned int next_pc;
+
+    // multiplexors to select the next program counter value
+    next_pc = (branch && zero) ? branchAddr : pc + 4;
+    next_pc = (jump) ? fullJumpAddr : next_pc;
+
+    // update the cpu state based on the rising edge of the system clock
+    // in real hardware, these updates would all happen simultaneously
     regs.update(regWrAddr, regWrData, regWrite);
     dmem.update(ALUResult, regRt, memWrite);
     pc = next_pc;
 
-    // Increment register write instructions count
-    if (regWrite)
-        totalRegWriteInstructions++;
-
-    // Increment memory instructions count
-    if (memRead || memWrite)
-        totalMemoryInstructions++;
-
-    // Multiplexors to select the next program counter value
-    next_pc = (branch && zero) ? branchAddr : pc + 4;
-    next_pc = (jump) ? fullJumpAddr : next_pc;
-
-    // Update the program counter
-    pc = next_pc;
+    /******************************************************************
+     * STUDENT CODE
+     * Instrument the CPU here to count the total number of instructions,
+     * the total registesr write instructions, and the total memory
+     * instructions
+     ******************************************************************/
 }
 
 //**********************************************************************

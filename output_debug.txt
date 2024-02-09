@@ -1,0 +1,152 @@
+Clock Cycle: 0
+Clock Cycle: 1
+Clock Cycle: 2
+Clock Cycle: 3
+Forwarding RS from MEM to Equality Unit
+Forwarding RT from MEM to ALU input
+Clock Cycle: 4
+Forwarding RS from MEM to ALU input
+Clock Cycle: 5
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 6
+Forwarding RS from WB to ALU input
+Clock Cycle: 7
+Clock Cycle: 8
+Clock Cycle: 9
+Clock Cycle: 10
+Clock Cycle: 11
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 12
+Forwarding RS from WB to ALU input
+Clock Cycle: 13
+Clock Cycle: 14
+Clock Cycle: 15
+Clock Cycle: 16
+Clock Cycle: 17
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 18
+Forwarding RS from WB to ALU input
+Clock Cycle: 19
+Clock Cycle: 20
+Clock Cycle: 21
+Clock Cycle: 22
+Clock Cycle: 23
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 24
+Forwarding RS from WB to ALU input
+Clock Cycle: 25
+Clock Cycle: 26
+Clock Cycle: 27
+Clock Cycle: 28
+Clock Cycle: 29
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 30
+Forwarding RS from WB to ALU input
+Clock Cycle: 31
+Clock Cycle: 32
+Clock Cycle: 33
+Clock Cycle: 34
+Clock Cycle: 35
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 36
+Forwarding RS from WB to ALU input
+Clock Cycle: 37
+Clock Cycle: 38
+Clock Cycle: 39
+Clock Cycle: 40
+Clock Cycle: 41
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 42
+Forwarding RS from WB to ALU input
+Clock Cycle: 43
+Clock Cycle: 44
+Clock Cycle: 45
+Clock Cycle: 46
+Clock Cycle: 47
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 48
+Forwarding RS from WB to ALU input
+Clock Cycle: 49
+Clock Cycle: 50
+Clock Cycle: 51
+Clock Cycle: 52
+Clock Cycle: 53
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 54
+Forwarding RS from WB to ALU input
+Clock Cycle: 55
+Clock Cycle: 56
+Clock Cycle: 57
+Clock Cycle: 58
+Clock Cycle: 59
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 60
+Forwarding RS from WB to ALU input
+Clock Cycle: 61
+Clock Cycle: 62
+Clock Cycle: 63
+Clock Cycle: 64
+Clock Cycle: 65
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 66
+Forwarding RS from WB to ALU input
+Clock Cycle: 67
+Clock Cycle: 68
+Clock Cycle: 69
+Clock Cycle: 70
+Clock Cycle: 71
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 72
+Forwarding RS from WB to ALU input
+Clock Cycle: 73
+Clock Cycle: 74
+Clock Cycle: 75
+Clock Cycle: 76
+Clock Cycle: 77
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 78
+Forwarding RS from WB to ALU input
+Clock Cycle: 79
+Clock Cycle: 80
+Clock Cycle: 81
+Clock Cycle: 82
+Clock Cycle: 83
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 84
+Forwarding RS from WB to ALU input
+Clock Cycle: 85
+Clock Cycle: 86
+Clock Cycle: 87
+Clock Cycle: 88
+Clock Cycle: 89
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 90
+Forwarding RS from WB to ALU input
+Clock Cycle: 91
+Clock Cycle: 92
+Clock Cycle: 93
+Clock Cycle: 94
+Clock Cycle: 95
+Forwarding RS from MEM to Equality Unit
+Clock Cycle: 96
+Forwarding RS from WB to ALU input
+Clock Cycle: 97
+Clock Cycle: 98
+Clock Cycle: 99
+Clock Cycle: 100
+PIPELINE
+IF:  12200001 (PC = 00000010)
+ID:  00000000
+EXE: 02118820
+MEM: 00000000
+WB:  08000002
+REGISTER FILE
+R00: 00000000 R08: 00000000 R10: 00000000 R18: 00000000
+R01: 00000000 R09: 00000000 R11: 00000000 R19: 00000000
+R02: 00000000 R0a: 00000000 R12: 00000000 R1a: 00000000
+R03: 00000000 R0b: 00000000 R13: 00000000 R1b: 00000000
+R04: 00000000 R0c: 00000000 R14: 00000000 R1c: 00000000
+R05: 00000000 R0d: 00000000 R15: 00000000 R1d: 00000000
+R06: 00000000 R0e: 00000000 R16: 00000000 R1e: 00000000
+R07: 00000000 R0f: 00000000 R17: 00000000 R1f: 00000000
+
