@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
         clockCycles++;
 
         // Check if the "done:" instruction has completed the pipeline
-        if ((instruction & 0xfc000000) == 0x08000062) // Check if the current instruction is a J-type instruction (opcode 0x08)
+        if (instruction == 0x08000062) // Check if the current instruction is "done:"
         {
             std::cout << "Program completed in " << clockCycles << " clock cycles." << std::endl;
             break;

@@ -66,8 +66,10 @@ int main(int argc, char *argv[])
         // Increment the clock cycle count
         clockCycles++;
 
+        // print instruction
+        std::cout << "Instruction: " << std::hex << instruction << std::dec << std::endl;
         // Check if the "done:" instruction has completed the pipeline
-        if ((instruction & 0xfc000000) == 0x08000062) // Check if the current instruction is a J-type instruction (opcode 0x08)
+        if (instruction == 0x08000062) // Check if the current instruction is "done:"
         {
             std::cout << "Program completed in " << clockCycles << " clock cycles." << std::endl;
             break;
@@ -80,6 +82,7 @@ int main(int argc, char *argv[])
     // Print the final state of the register file using the Cpu's dump function
     std::cout << "Final Register File State:" << std::endl;
     cpu.dump();
+
 
     return 0;
 }
