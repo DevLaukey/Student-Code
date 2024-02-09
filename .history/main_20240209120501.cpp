@@ -1,6 +1,4 @@
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include "DataMemory.h"
 #include "InstructionMemory.h"
 #include "RegisterFile.h"
@@ -12,20 +10,8 @@ int main()
     InstructionMemory instructionMemory;
     RegisterFile registerFile;
 
-    // Load program code into instruction memory from input_debug.txt
-    std::ifstream inputFile("input_debug.txt");
-    std::string line;
-
-    while (std::getline(inputFile, line))
-    {
-        // Parse the line into instruction address, instruction type, and instruction value
-        unsigned int address, type, value;
-        std::istringstream iss(line);
-        iss >> std::hex >> address >> type >> value;
-
-        // Store the instruction in instruction memory
-        instructionMemory.setAt(address, value);
-    }
+    // Load program code into instruction memory
+    instructionMemory.setAt(0, 0x01234567); // Example instruction
 
     // Simulate the fetch-decode-execute cycle
     for (unsigned int pc = 0; pc < 2048; pc += 4)
