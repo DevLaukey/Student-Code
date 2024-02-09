@@ -1,0 +1,135 @@
+00000000 1 8c130004    #         lw  $s3,data_offset($zero) // s3 = 0 (offset to data array - think *data)
+00000004 1 8c140000    #         lw  $s4,0($zero)         // s4 = precomputed value if i sums
+00000008 1 8e690000    # 1       lw  $t1,0($s3)           // data_value = *data
+0000000c 1 00000000    #         nop                      // delay for load-use
+00000010 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000014 1 8e690004    # 2       lw  $t1,4($s3)           // data_value = *data
+00000018 1 00000000    #         nop                      // delay for load-use
+0000001c 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000020 1 8e690008    # 3       lw  $t1,8($s3)           // data_value = *data
+00000024 1 00000000    #         nop                      // delay for load-use
+00000028 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+0000002c 1 8e69000c    # 4       lw  $t1,c($s3)           // data_value = *data
+00000030 1 00000000    #         nop                      // delay for load-use
+00000034 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000038 1 8e690010    # 5       lw  $t1,10($s3)           // data_value = *data
+0000003c 1 00000000    #         nop                      // delay for load-use
+00000040 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000044 1 8e690014    # 6       lw  $t1,14($s3)           // data_value = *data
+00000048 1 00000000    #         nop                      // delay for load-use
+0000004c 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000050 1 8e690018    # 7       lw  $t1,18($s3)           // data_value = *data
+00000054 1 00000000    #         nop                      // delay for load-use
+00000058 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+0000005c 1 8e69001c    # 8       lw  $t1,1c($s3)           // data_value = *data
+00000060 1 00000000    #         nop                      // delay for load-use
+00000064 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000068 1 8e690020    # 9       lw  $t1,20($s3)           // data_value = *data
+0000006c 1 00000000    #         nop                      // delay for load-use
+00000070 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000074 1 8e690024    # 10      lw  $t1,24($s3)           // data_value = *data
+00000078 1 00000000    #         nop                      // delay for load-use
+0000007c 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000080 1 8e690028    # 11      lw  $t1,28($s3)           // data_value = *data
+00000084 1 00000000    #         nop                      // delay for load-use
+00000088 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+0000008c 1 8e69002c    # 12      lw  $t1,2c($s3)           // data_value = *data
+00000090 1 00000000    #         nop                      // delay for load-use
+00000094 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000098 1 8e690030    # 13      lw  $t1,30($s3)           // data_value = *data
+0000009c 1 00000000    #         nop                      // delay for load-use
+000000a0 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000a4 1 8e690034    # 14      lw  $t1,34($s3)           // data_value = *data
+000000a8 1 00000000    #         nop                      // delay for load-use
+000000ac 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000b0 1 8e690038    # 15      lw  $t1,38($s3)           // data_value = *data
+000000b4 1 00000000    #         nop                      // delay for load-use
+000000b8 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000bc 1 8e69003c    # 16      lw  $t1,3c($s3)           // data_value = *data
+000000c0 1 00000000    #         nop                      // delay for load-use
+000000c4 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000c8 1 8e690040    # 17      lw  $t1,40($s3)           // data_value = *data
+000000cc 1 00000000    #         nop                      // delay for load-use
+000000d0 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000d4 1 8e690044    # 18      lw  $t1,44($s3)           // data_value = *data
+000000d8 1 00000000    #         nop                      // delay for load-use
+000000dc 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000e0 1 8e690048    # 19      lw  $t1,48($s3)           // data_value = *data
+000000e4 1 00000000    #         nop                      // delay for load-use
+000000e8 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000ec 1 8e69004c    # 20      lw  $t1,4c($s3)           // data_value = *data
+000000f0 1 00000000    #         nop                      // delay for load-use
+000000f4 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+000000f8 1 8e690050    # 21      lw  $t1,50($s3)           // data_value = *data
+000000fc 1 00000000    #         nop                      // delay for load-use
+00000100 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000104 1 8e690054    # 22      lw  $t1,54($s3)           // data_value = *data
+00000108 1 00000000    #         nop                      // delay for load-use
+0000010c 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000110 1 8e690058    # 23      lw  $t1,58($s3)           // data_value = *data
+00000114 1 00000000    #         nop                      // delay for load-use
+00000118 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+0000011c 1 8e69005c    # 24      lw  $t1,5c($s3)           // data_value = *data
+00000120 1 00000000    #         nop                      // delay for load-use
+00000124 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000128 1 8e690060    # 25      lw  $t1,60($s3)           // data_value = *data
+0000012c 1 00000000    #         nop                      // delay for load-use
+00000130 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000134 1 8e690064    # 26      lw  $t1,64($s3)           // data_value = *data
+00000138 1 00000000    #         nop                      // delay for load-use
+0000013c 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000140 1 8e690068    # 27      lw  $t1,68($s3)           // data_value = *data
+00000144 1 00000000    #         nop                      // delay for load-use
+00000148 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+0000014c 1 8e69006c    # 28      lw  $t1,6c($s3)           // data_value = *data
+00000150 1 00000000    #         nop                      // delay for load-use
+00000154 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000158 1 8e690070    # 29      lw  $t1,70($s3)           // data_value = *data
+0000015c 1 00000000    #         nop                      // delay for load-use
+00000160 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000164 1 8e690074    # 30      lw  $t1,74($s3)           // data_value = *data
+00000168 1 00000000    #         nop                      // delay for load-use
+0000016c 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000170 1 8e690078    # 31      lw  $t1,78($s3)           // data_value = *data
+00000174 1 00000000    #         nop                      // delay for load-use
+00000178 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+0000017c 1 8e69007c    # 32      lw  $t1,7c($s3)           // data_value = *data
+00000180 1 00000000    #         nop                      // delay for load-use
+00000184 1 0289a020    #         add $s4,$s4,$t1          // sum = sum + data_value
+00000188 1 08000062    # done:   j   done                 // loop forever
+0000018c 1 00000000    #         nop
+00000000 0 00000210    # isums:
+00000004 0 0000000C    # data_offset:
+00000008 0 00000000    # unused:
+0000000C 0 00000001    # data:
+00000010 0 00000002
+00000014 0 00000003
+00000018 0 00000004
+0000001c 0 00000005
+00000020 0 00000006
+00000024 0 00000007
+00000028 0 00000008
+0000002c 0 00000009
+00000030 0 0000000a
+00000034 0 0000000b
+00000038 0 0000000c
+0000003c 0 0000000d
+00000040 0 0000000e
+00000044 0 0000000f
+00000048 0 00000010
+0000004c 0 00000011
+00000050 0 00000012
+00000054 0 00000013
+00000058 0 00000014
+0000005c 0 00000015
+00000060 0 00000016
+00000064 0 00000017
+00000068 0 00000018
+0000006c 0 00000019
+00000070 0 0000001a
+00000074 0 0000001b
+00000078 0 0000001c
+0000007c 0 0000001d
+00000080 0 0000001e
+00000084 0 0000001f
+00000088 0 00000020

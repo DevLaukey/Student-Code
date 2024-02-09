@@ -113,12 +113,8 @@ public:
     // place a value in data memory
     void setImem(unsigned int addr, unsigned int data); // place a value in instruction memory
     void dump();                                        // dump the cpu state to the standard output device
-
-    // New method to get the program counter (PC)
-    unsigned int getPC() const
-    {
-        return regIDEX_IDside.next_pc; // Assuming next_pc is the program counter in the ID/EX register
-    }
+    bool isProgramComplete() const;
+    void updatePipeline();
 };
 
 #endif // CPU_H

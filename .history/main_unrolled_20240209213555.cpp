@@ -68,6 +68,8 @@ int main(int argc, char *argv[])
         // Update the Cpu for one clock cycle
         cpu.update();
 
+        // Optionally, print the state of the Cpu (uncomment if needed)
+        // cpu.dump();
     }
 
     // Print the final state of the register file using the Cpu's dump function

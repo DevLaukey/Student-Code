@@ -1,21 +1,3 @@
-
-/*************************************************************************
- * Cpu.h
- *
- * This file contains the class definition for the CPU
- * for the single-cycle machine defined in "Computer Organization and
- * Design, the Hardware Software Interface", Patterson & Hennessy, Fifth Edition.
- *
- * This code was developed as a demonstration for SER450 and is provided
- * as-is as a learning aid for Chapter 4 of the class text.
- *
- * COPYRIGHT (C) 2019, Arizona State University
- * ALL RIGHTS RESERVED
- *
- * Author: Doug Sandy
- *
- **************************************************************************/
-
 #ifndef CPU_H
 #define CPU_H
 #include "DataMemory.h"
@@ -31,6 +13,8 @@ private:
     {
         // control and data signals from the IF stage
         unsigned int instruction;
+        unsigned int next_pc; // this pipeline field is used to hold
+                              // the value of the PC register
     } ifid_reg;
 
     typedef struct
@@ -49,8 +33,6 @@ private:
         unsigned int rt;
         unsigned int rd;
         unsigned int immed_se;
-        unsigned int next_pc;     // this pipeline field is used to hold
-                                  // the value of the PC register
         unsigned int instruction; // this is only used for dump support
     } idex_reg;
 
@@ -114,11 +96,9 @@ public:
     void setImem(unsigned int addr, unsigned int data); // place a value in instruction memory
     void dump();                                        // dump the cpu state to the standard output device
 
-    // New method to get the program counter (PC)
-    unsigned int getPC() const
-    {
-        return regIDEX_IDside.next_pc; // Assuming next_pc is the program counter in the ID/EX register
-    }
+    // New functions
+    bool isProgramComplete() const;
+    void updatePipeline();
 };
 
 #endif // CPU_H

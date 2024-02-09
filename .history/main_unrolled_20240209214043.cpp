@@ -52,22 +52,17 @@ int main(int argc, char *argv[])
         instructionMemory.setAt(address, value);
     }
 
-    // Simulate the fetch-decode-execute cycle using the Cpu class
-    for (unsigned int cycle = 0; cycle < numCycles; ++cycle)
+    // Simulate the pipelined execution using the Cpu class
+    for (unsigned int cycle = 0; !cpu.isProgramComplete(); ++cycle)
     {
         // Print the current clock cycle
         std::cout << "Clock Cycle: " << cycle << std::endl;
 
-        // Fetch instruction from instruction memory
-        unsigned int pc = cycle * 4;
-        unsigned int instruction = instructionMemory.value(pc);
+        // Update the Cpu for one clock cycle (pipelined version)
+        cpu.updatePipeline();
 
-        // Set the program counter using the Cpu's setImem function
-        cpu.setImem(pc, instruction);
-
-        // Update the Cpu for one clock cycle
-        cpu.update();
-
+        // Optionally, print the state of the Cpu (uncomment if needed)
+        // cpu.dump();
     }
 
     // Print the final state of the register file using the Cpu's dump function

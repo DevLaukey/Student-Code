@@ -4,7 +4,7 @@
 #include "DataMemory.h"
 #include "InstructionMemory.h"
 #include "RegisterFile.h"
-#include "Cpu.h" // Include the Cpu class header
+#include "Cpu.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,15 +21,14 @@ int main(int argc, char *argv[])
     std::istringstream(argv[2]) >> numCycles;
 
     // Print a startup banner
-    std::cout << "SER450 - Project 4b" << std::endl;
-    std::cout << "Akhil Matthews" << std::endl;
+    std::cout << "MIPS Simulator" << std::endl;
     std::cout << "--------------------------------" << std::endl;
 
     // Create instances of each class
     DataMemory dataMemory;
     InstructionMemory instructionMemory;
     RegisterFile registerFile;
-    Cpu cpu(dataMemory, registerFile); // Create an instance of the Cpu class
+    Cpu cpu(dataMemory, registerFile);
 
     // Load program code into instruction memory from the specified file
     std::ifstream inputFile(filename);
@@ -40,7 +39,6 @@ int main(int argc, char *argv[])
     }
 
     std::string line;
-
     while (std::getline(inputFile, line))
     {
         // Parse the line into instruction address, instruction type, and instruction value
@@ -68,6 +66,15 @@ int main(int argc, char *argv[])
         // Update the Cpu for one clock cycle
         cpu.update();
 
+        // Check if the program has finished (reached the "done:" instruction)
+        if (cpu.getPC() == 0x88)
+        {
+            std::cout << "Program finished at clock cycle " << cycle << std::endl;
+            break;
+        }
+
+        // Optionally, print the state of the Cpu (uncomment if needed)
+        // cpu.dump();
     }
 
     // Print the final state of the register file using the Cpu's dump function
